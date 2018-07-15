@@ -82,10 +82,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += vendor/pixeldust/prebuilt/etc/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/apns-conf.xml
 
 # Backup Tool
+ifeq ($(AB_OTA_UPDATER),true)
 PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/pixeldust/prebuilt/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/pixeldust/prebuilt/bin/50-base.sh:system/addon.d/50-base.sh
+    vendor/pixeldust/prebuilt/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
+    vendor/pixeldust/prebuilt/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
+    vendor/pixeldust/prebuilt/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
+else
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/prebuilt/bin/backuptool.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool.sh \
+    vendor/pixeldust/prebuilt/bin/backuptool.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool.functions \
+    vendor/pixeldust/prebuilt/bin/50-base.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-base.sh
+endif
 
 # Copy all init rc files
 $(foreach f,$(wildcard vendor/pixeldust/prebuilt/etc/init/*.rc),\
