@@ -43,7 +43,7 @@ PRODUCT_PACKAGES += \
 
 # PixelDust overlay
 PRODUCT_PACKAGE_OVERLAYS += \
-    vendor/pixeldust/overlay/common
+    vendor/pixeldust/overlay
 
 # Fonts
 PRODUCT_COPY_FILES += \
