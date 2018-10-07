@@ -26,7 +26,10 @@ PRODUCT_PACKAGES += \
     Longshot
 
 # Recorder
-PRODUCT_PACKAGES += Recorder
+PRODUCT_PACKAGES += \
+    Recorder \
+    OmniRecord
+
 PRODUCT_COPY_FILES += vendor/pixeldust/prebuilt/etc/privapp-permissions/privapp-permissions-recorder.xml:system/etc/permissions/privapp-permissions-recorder.xml
 
 # Weather
