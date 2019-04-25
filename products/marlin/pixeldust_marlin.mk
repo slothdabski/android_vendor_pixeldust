@@ -64,3 +64,4 @@ PRODUCT_COPY_FILES += \
 # Use SDCLANG
 TARGET_USE_SDCLANG := true
 
+$(call inherit-product-if-exists, vendor/google/marlin/marlin-vendor.mk)
