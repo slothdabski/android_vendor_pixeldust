@@ -15,6 +15,9 @@
 # Disable vendor restrictions
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
+# Disable qmi EAP-SIM security
+DISABLE_EAP_PROXY := true
+
 # Google property overides
 ifeq ($(filter marlin sailfish,$(TARGET_PRODUCT)),)
 PRODUCT_PRODUCT_PROPERTIES += \
