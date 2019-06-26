@@ -1,0 +1,14 @@
+[
+    {
+        "target_path":  "kernel/motorola/shamu",
+        "repository":   "android_kernel_moto_shamu",
+        "remote":       "lineage",
+        "revision":     "lineage-16.0"
+    },
+    {
+        "target_path":  "hardware/broadcom/nfc",
+	"repository":   "android_hardware_broadcom_nfc",
+	"remote":       "lineage",
+	"revision":     "lineage-16.0"
+    }
+]
