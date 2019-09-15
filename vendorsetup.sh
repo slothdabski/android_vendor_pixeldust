@@ -26,8 +26,3 @@ add_lunch_combo pixeldust_sailfish-userdebug
 add_lunch_combo pixeldust_sailfish-user
 add_lunch_combo pixeldust_X01BD-userdebug
 add_lunch_combo pixeldust_X01BD-user
-
-# SDClang Environment Variables
-export SDCLANG_AE_CONFIG=$(pwd)/vendor/pixeldust/sdclang/sdclangAE.json
-export SDCLANG_CONFIG=$(pwd)/vendor/pixeldust/sdclang/sdclang.json
-export SDCLANG_SA_ENABLED=false
