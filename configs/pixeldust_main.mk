@@ -14,7 +14,8 @@
 
 # PixelDust Wallpapers
 PRODUCT_PACKAGES += \
-    PixelDustWallpapers
+    PixelDustWallpapers \
+    WallpaperPicker2
 
 # Cutout overlay
 PRODUCT_PACKAGES += \
