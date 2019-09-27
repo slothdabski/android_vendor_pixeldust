@@ -45,6 +45,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay
 
+# Pixel overlay
+PRODUCT_PACKAGES += \
+    PixelSetupWizardOverlay \
+    NexusLauncherReleaseOverlay
+
 # Fonts
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/etc/fonts_customization.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/fonts_customization.xml \
