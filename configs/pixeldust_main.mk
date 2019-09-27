@@ -43,7 +43,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     ThemePicker
 
--include vendor/themes/common.mk
+#-include vendor/themes/common.mk
 
 # PixelDust overlay
 PRODUCT_PACKAGE_OVERLAYS += \
