@@ -31,6 +31,9 @@ TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
 # Inherit AOSP device configuration for marlin.
 $(call inherit-product-if-exists, device/google/marlin/aosp_marlin.mk)
 
+# Generic CAF packages
+include device/qcom/common/common.mk
+
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
 
