@@ -1,4 +1,4 @@
-# Copyright (C) 2018 The Pixel Dust Project
+# Copyright (C) 2018-2019 The Pixel Dust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,6 +11,24 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+# Google property overides
+ifeq ($(filter marlin sailfish,$(TARGET_PRODUCT)),)
+PRODUCT_PRODUCT_PROPERTIES += \
+    keyguard.no_require_sim=true \
+    ro.com.android.dataroaming=false
+endif
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.carrier=unknown \
+    ro.opa.eligible_device=true
+
+# Enable tethering
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.dun.override=0
+
+# Bluetooth Audio (A2DP)
+PRODUCT_PACKAGES += libbthost_if
 
 # Include explicitly to work around GMS issues
 PRODUCT_PACKAGES += libprotobuf-cpp-full
@@ -26,9 +44,22 @@ PRODUCT_PACKAGES += \
     ntfsfix \
     ntfs-3g
 
+# Launcher
+PRODUCT_PACKAGES += \
+    Launcher3QuickStep
+
+# LiveWallpapers
+PRODUCT_PACKAGES += \
+    LiveWallpapersPicker
+
+# Telephony packages
+PRODUCT_PACKAGES += \
+    Stk \
+    CellBroadcastReceiver
+
 # TCP Connection Management
 PRODUCT_PACKAGES += tcmiface
-#PRODUCT_BOOT_JARS += tcmiface
+PRODUCT_BOOT_JARS += tcmiface
 
 # RCS Service
 PRODUCT_PACKAGES += \
@@ -41,35 +72,8 @@ PRODUCT_PACKAGES += \
     rcs_service_api \
     rcs_service_api.xml
 
-# Bluetooth Audio (A2DP)
-PRODUCT_PACKAGES += libbthost_if
-
-# MSIM manual provisioning
-PRODUCT_PACKAGES += ims-ext-common
-PRODUCT_PACKAGES += telephony-ext
-#PRODUCT_BOOT_JARS += telephony-ext
-
-# WeatherClient
-PRODUCT_PACKAGES += WeatherClient
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/etc/permissions/org.pixelexperience.weather.client.xml:system/etc/permissions/org.pixelexperience.weather.client.xml \
-    vendor/pixeldust/prebuilt/etc/default-permissions/org.pixelexperience.weather.client.xml:system/etc/default-permissions/org.pixelexperience.weather.client.xml
-
-# Themes
--include vendor/themes/common.mk
-
-# Extra Packages
-PRODUCT_PACKAGES += \
-    Launcher3QuickStep \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    Longshot \
-    Recorder \
-    ThemePicker
-
-# Some permissions
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/etc/privapp-permissions/privapp-permissions-recorder.xml:system/etc/permissions/privapp-permissions-recorder.xml
+# APNs Conf
+PRODUCT_COPY_FILES += vendor/pixeldust/prebuilt/etc/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/apns-conf.xml
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
@@ -77,11 +81,9 @@ PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/bin/backuptool.functions:install/bin/backuptool.functions \
     vendor/pixeldust/prebuilt/bin/50-base.sh:system/addon.d/50-base.sh
 
-# Cutout control overlays
-PRODUCT_PACKAGES += \
-    HideCutout \
-    StatusBarStock
+# Copy all init rc files
+$(foreach f,$(wildcard vendor/pixeldust/prebuilt/etc/init/*.rc),\
+	$(eval PRODUCT_COPY_FILES += $(f):system/etc/init/$(notdir $f)))
 
-# PixelSetupWizard overlay
-PRODUCT_PACKAGES += \
-    PixelSetupWizardOverlay
+# Include PixelDust sepolicy
+-include device/pixeldust/sepolicy/common/sepolicy.mk

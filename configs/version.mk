@@ -35,3 +35,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.ota.build_type=$(SIGN_KEY) \
     ro.pixeldust.ota.build_date_utc=$(BUILD_DATE)-$(BUILD_TIME)
 
+# Pixel Dust OTA
+ifneq ($(IS_GENERIC_SYSTEM_IMAGE), true)
+ifeq ($(SIGN_KEY), RELEASE)
+
+PRODUCT_PACKAGES += \
+    Updates
+
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/prebuilt/etc/privapp-permissions/com.pixeldust.updater.xml:system/etc/permissions/com.pixeldust.updater.xml
+
+PRODUCT_GENERIC_PROPERTIES += \
+    sys.ota.disable_uncrypt=1
+
+endif
+endif

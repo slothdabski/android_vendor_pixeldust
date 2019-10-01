@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Ambient, Google app and Sound search tile - music recognition
 PRODUCT_PACKAGES += \
     AmbientSensePrebuilt
 
-# Ambient, Google app and Sound search tile - music recognition
 PRODUCT_COPY_FILES +=  \
     vendor/pixeldust/prebuilt/etc/ambient/matcher_tah.leveldb:system/etc/ambient/matcher_tah.leveldb
