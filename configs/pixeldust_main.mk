@@ -41,7 +41,8 @@ PRODUCT_COPY_FILES += \
 
 # PixelDust Theme
 PRODUCT_PACKAGES += \
-    ThemePicker
+    ThemePicker \
+    PixelThemes
 
 #-include vendor/themes/common.mk
 
