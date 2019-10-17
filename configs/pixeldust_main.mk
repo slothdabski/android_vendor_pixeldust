@@ -44,7 +44,7 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     PixelThemes
 
-#-include vendor/themes/common.mk
+-include vendor/themes/common.mk
 
 # PixelDust overlay
 PRODUCT_PACKAGE_OVERLAYS += \
