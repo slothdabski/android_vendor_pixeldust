@@ -32,7 +32,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.pixeldust.version=$(ROM_VERSION)-$(BUILD_VERSION)-$(TARGET_DEVICE)-$(SIGN_KEY) \
     ro.pixeldust.ota.version=$(PIXELDUST_VERSION) \
     ro.pixeldust.ota.version_code=$(BUILD_VERSION) \
-    ro.pixeldust.ota.build_type=$(SIGN_KEY) \
+    ro.pixeldust.ota.timestamp=$(BUILD_TIMESTAMP) \
     ro.pixeldust.ota.build_date_utc=$(BUILD_DATE)-$(BUILD_TIME)
 
 # Pixel Dust OTA
@@ -45,8 +45,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/etc/privapp-permissions/com.pixeldust.updater.xml:system/etc/permissions/com.pixeldust.updater.xml
 
-PRODUCT_GENERIC_PROPERTIES += \
-    sys.ota.disable_uncrypt=1
+PRODUCT_PRODUCT_PROPERTIES += \
+    sys.ota.disable_uncrypt=1 \
+    pixeldust.updater.allow_downgrading=1
 
 endif
 endif
