@@ -19,6 +19,7 @@ PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/coral/pixeldust_coral.mk \
     $(LOCAL_DIR)/crosshatch/pixeldust_crosshatch.mk \
     $(LOCAL_DIR)/flame/pixeldust_flame.mk \
+    $(LOCAL_DIR)/oneplus7pro/pixeldust_oneplus7pro.mk \
     $(LOCAL_DIR)/marlin/pixeldust_marlin.mk \
     $(LOCAL_DIR)/taimen/pixeldust_taimen.mk \
     $(LOCAL_DIR)/tissot/pixeldust_tissot.mk \
@@ -42,6 +43,8 @@ COMMON_LUNCH_CHOICES += \
     pixeldust_flame-userdebug \
     pixeldust_marlin-userdebug \
     pixeldust_marlin-user \
+    pixeldust_oneplus7pro-userdebug \
+    pixeldust_oneplus7pro-user \
     pixeldust_taimen-userdebug \
     pixeldust_taimen-user \
     pixeldust_tissot-userdebug \
