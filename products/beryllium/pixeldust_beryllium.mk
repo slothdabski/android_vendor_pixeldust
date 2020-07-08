@@ -12,14 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/xiaomi/beryllium/device.mk)
-
 # Bootanimation res
 BOOTANIMATION := 1080
 
 # Release name
 PRODUCT_RELEASE_NAME := POCO F1
 export TARGET_DEVICE := beryllium
+
+$(call inherit-product, device/xiaomi/beryllium/device.mk)
+
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
@@ -36,9 +40,8 @@ REMOVE_GAPPS_PACKAGES += \
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := pixeldust_beryllium
 PRODUCT_DEVICE := beryllium
-PRODUCT_BRAND := Xiaomi
+PRODUCT_BRAND := xiaomi
 PRODUCT_MODEL := POCO F1
-PRODUCT_MANUFACTURER := Xiaomi
 
 BUILD_FINGERPRINT := "Xiaomi/beryllium/beryllium:10/QKQ1.190828.002/V11.0.6.0.QEJMIXM:user/release-keys"
 
